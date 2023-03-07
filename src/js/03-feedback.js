@@ -4,7 +4,10 @@ const feedbackForm = document.querySelector('.feedback-form');
 function saveInLocalStorage() {
   const email = feedbackForm.elements.email;
   const message = feedbackForm.elements.message;
-  const data = { email, message };
+  const data = {
+    email: email.value,
+    message: message.value,
+  };
   localStorage.setItem('feedback-form-state', JSON.stringify(data));
 }
 
@@ -12,11 +15,11 @@ feedbackForm.addEventListener('input', () => {
   saveInLocalStorage();
 });
 
-form.addEventListener('submit', event => {
+feedbackForm.addEventListener('submit', event => {
   event.preventDefault();
   saveInLocalStorage();
   console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
-  form.reset();
+  feedbackForm.reset();
   localStorage.clear();
 });
 
