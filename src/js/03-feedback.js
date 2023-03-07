@@ -4,10 +4,7 @@ const feedbackForm = document.querySelector('.feedback-form');
 function saveInLocalStorage() {
   const email = feedbackForm.elements.email;
   const message = feedbackForm.elements.message;
-  const data = {
-    email: emailInput.value,
-    message: messageInput.value,
-  };
+  const data = { email, message };
   localStorage.setItem('feedback-form-state', JSON.stringify(data));
 }
 
